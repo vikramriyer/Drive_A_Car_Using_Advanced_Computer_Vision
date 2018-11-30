@@ -30,10 +30,30 @@ We begin by calibrating the camera. The cameras that we use tend to generate som
 
 It turns out that the deformities are constant and hence the above method works well.
 
+![](rubric_images/calibration2.jpg)
+![](rubric_images/calibration3.jpg)
+
 ## Color Spaces and Gradients
 
+**HLS**
+![](rubric_images/HLS.png)
+
+**LUV**
+![](rubric_images/LUV.png)
+
+**HSV**
+![](rubric_images/HSV.png)
+
 ## Undistortion
+![](rubric_images/distorted_undistorted_train.png)
+![](rubric_images/distorted_undistorted_valid.png)
 
 ## Perspective Transform
+![](rubric_images/perspective_transform.png)
+
+## Fit lines sliding window algo
+![](rubric_images/plot_line_window1.png)
+![](rubric_images/plot_line_window2.png)
 
 ## Drawing Lane Lines
+![](rubric_images/lane_drawn_roc_offset_straight_lines2.jpg)
