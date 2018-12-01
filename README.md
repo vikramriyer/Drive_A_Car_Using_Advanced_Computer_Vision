@@ -33,6 +33,16 @@ It turns out that the deformities are constant and hence the above method works 
 ![](rubric_images/calibration2.jpg)
 ![](rubric_images/calibration3.jpg)
 
+## Undistortion
+
+In the previous step, we calibrated our camera; it is time we test our results on the images we have. <br>
+First let us try with one of the images that we used for calibrating the camera. The undistortion seems to work very well with the curved corners getting straightened. However, it is obvious that the results would be good considering the calibration was done on the same set of images.
+![](rubric_images/distorted_undistorted_train.png)
+
+Now, we if try the same distortion removal on the images of the lane lines, we might probably be able to test the working of the distortion removal algo better. So, as we can see below, it might seem at first that there is no major difference in the orginal image and the undistorted image, but if we look at the hood of the car, the curved look seems to have flattened/straightened a bit. To visualize better, one can imagine a boomerang straghtened. <br>
+This slight change in orientation is useful when in the future we warp the images and try to generate a trapeziodal shaped region of interest where the lane is highlighted. The accuracy is improved.
+![](rubric_images/distorted_undistorted_valid.png)
+
 ## Color Spaces and Gradients
 
 **HLS**
@@ -44,10 +54,6 @@ It turns out that the deformities are constant and hence the above method works 
 **HSV**
 ![](rubric_images/HSV.png)
 
-## Undistortion
-![](rubric_images/distorted_undistorted_train.png)
-![](rubric_images/distorted_undistorted_valid.png)
-
 ## Perspective Transform
 ![](rubric_images/perspective_transform.png)
 
@@ -57,3 +63,13 @@ It turns out that the deformities are constant and hence the above method works 
 
 ## Drawing Lane Lines
 ![](rubric_images/lane_drawn_roc_offset_straight_lines2.jpg)
+
+## Discussion
+### Potential shortcomings with the current pipeline
+__Lighting conditions__ <br>
+
+Though there is an improvement over the previous algorithm where we only fit straight lines, it is evident by looking at the harder challenge videos that the current pipeline fails to catch sudden changes in lighting conditions. 
+Even with this approach, the number hyper parameters used was considerably high and the color space and gradient finding methods took a lot of time and effort and the results are still not satisfactory.
+
+### Possible improvements
+
