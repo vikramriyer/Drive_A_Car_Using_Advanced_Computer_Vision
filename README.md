@@ -64,7 +64,29 @@ Below are some of the results of HLS, LUV and HSV color spaces.
 ![](rubric_images/HSV.png)
 
 ## Perspective Transform
+
+**What is a Perspective Transform?** <br>
+Simply put, the perspective transform is just a change in the viewing angle. Suppose a person is driving a car on lane. The way the driver looks at the lane he is driving on is different from the person who is on the side seat as well as the back seats. So, each of these cases, certain person might have better view of what lies ahead. For example, the driver might have a better view of curves that are ahead of them. However, if imagine a bird watching over the road from above, it would have an even better view of the road ahead. So, these are ways by which a single road/lane can be viewed from different angles.
+
+**Whats the use?** <br>
+We use the best of worlds to choose what action to take further. (Note: We are not taking action in this part of the project, but will definitely later.) So, by viewing using a birds-eye view i.e. top view, we can estimate that there are curves ahead better than just viewing from the driver's perspective. We will view some images of the drivers and the birds view of the same road.
+
+**Q. How do we use it in our pipeline?** <br>
+We binarize the image using some thresholds and finally what we get is lane lines from the top view. We then use these lines to decide if the line is straight, or turns left or right. And depending upon that we fit polynomials that will draw straight lines or curves onto the original image. Simply put, these lines will be drawn based on coordinates and hence in the further projects, we can train the car or simulator to stay within these points.
+
+Below is a sample of how the image looks originall, transformed using a birds-eye view and finally the binary representation of the birds-eye view.
 ![](rubric_images/perspective_transform.png)
+
+Below are the configurations we use to convert from the original image to the rectangle we obtain to viewing from the top i.e. the birds-eye view.
+
+
+|  Source  |Destination|  Position  |
+|----------|-----------|------------| 
+|(180,720) | (100,720) | bottom-left|
+|(560,460) |   (0,0)   |  top-left  |
+|(740,460) | (1300,0)  |  top-right |
+|(1200,720)| (1200,720)|bottom-right|
+
 
 ## Fit lines sliding window algo
 ![](rubric_images/plot_line_window1.png)
