@@ -70,7 +70,26 @@ Below are some of the results of HLS, LUV and HSV color spaces.
 ![](rubric_images/plot_line_window1.png)
 ![](rubric_images/plot_line_window2.png)
 
-## Drawing Lane Lines
+## Drawing Lane Lines and measuring Radius of Curvature
+
+**Lane Lines** <br>
+The __algorithm__ to draw lane lines is as follows:
+- Using a histogram, we find the top two peaks in an image. The histogram is then separated into left and right to individually tackle the left and right lane lines
+- The pixel positions/indices are calculated and are used by the polygon fitting algorithm to draw lines on the warped image.
+- Finally, the warped image is unwarped using the Inverse transform (MInv) that we obtained before.
+
+Now, the tricky part is, getting the left and right lane pixels with above algorithm is costly with respect to number of operations. So, we maintain a __Line__ class to keep track on whether this is the first time we are finding the lane pixels. If the lane pixels have been found previously, we use that data to average out as there is not much difference in the lane lines between 2 consecutive frames. Also, if the lane lines are lost and couldn't be calculated for a threshold set of times, we revert back to the above algorithm to finding the pixels from scratch.
+
+**ROC** <br>
+Throughout the video, most of the frames have straight lines and as a result the radius of curvature seems to be higher. However, on curved roads, it seems to have reduced hugely and the algorithm still works which is sign of a moderately well formed algorithm :)
+
+We use the below formula that we also used in the classroom to calculate the radius of curvature for a function __y = f(x)__, 
+![](rubric_images/ROC.png)
+
+However, the above value was calculated for each of the left and right lanes and later averaged so that the lines remain consistent and parallel to each other at a certain point in a frame.
+
+Below is an image of how a particular frame with lane lines drawn and radius of curvature calculated and distance from the margin calculated looks like.
+
 ![](rubric_images/lane_drawn_roc_offset_straight_lines2.jpg)
 
 ## Discussion
