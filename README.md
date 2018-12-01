@@ -6,8 +6,8 @@ In this project, our goal is to write a software pipeline to identify the lane b
 ![](project_video_lane.gif)
 
 ## Administrative Stuff
-- All the code for the pipeline is present in P2.ipynb file.
-- The project video is named "project_video_output.mp4".
+- All the code for the pipeline is present in [P2.ipynb](P2.ipynb) file. If you prefer watching on the browser, I suggest checking the html [(P2.html)](P2.html) version of the same notebook.
+- The project video is named [project_video_output.mp4](https://youtu.be/izcRpUbAXnk).
 
 
 Steps in the Pipeline
