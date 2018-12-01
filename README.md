@@ -44,6 +44,15 @@ This slight change in orientation is useful when in the future we warp the image
 ![](rubric_images/distorted_undistorted_valid.png)
 
 ## Color Spaces and Gradients
+Finding the correct combination of color spaces and gradients is the most time consuming and imperatively the most important task in this project. <br>
+There were 2 types of lane lines, <br>
+1. __Yellow lines__ (solid and usually continuous)
+2. __White lines__ (solid but usually discontinuous and faint)
+
+To start with I tried with several combinations of color spaces and gradients in the x direction to finding only the vertical edges. However, even with a lot of fine tuning, I ended up with not so interesting results. I even tried taking x gradients for particular channels to extract the white lane lines as they were the most difficult to find out between the 2 listed above. With the S channel of the HLS color space, I could easily extract the yellow lane lines. However, to highlight the white lane lines and to combine well with bitwise or'ed S channel of HLS, I used the V channel from the HSV color space. <br>
+LUV color space's L showed some promise but the V from the HSV did a better job in conditions of higher brightness.
+
+Below are some of the results of HLS, LUV and HSV color spaces.
 
 **HLS**
 ![](rubric_images/HLS.png)
