@@ -75,10 +75,9 @@ Below are some of the results of HLS, LUV and HSV color spaces.
 
 ## Discussion
 ### Potential shortcomings with the current pipeline
-__Lighting conditions__ <br>
-
-Though there is an improvement over the previous algorithm where we only fit straight lines, it is evident by looking at the harder challenge videos that the current pipeline fails to catch sudden changes in lighting conditions. 
-Even with this approach, the number hyper parameters used was considerably high and the color space and gradient finding methods took a lot of time and effort and the results are still not satisfactory.
+__High Brightness conditions__: Though there is an improvement over the previous algorithm where we only fit straight lines, it is evident by looking at the harder challenge videos that the current pipeline fails to catch sudden changes in lighting conditions. 
+__Parameters__: Even with this approach, the number of parameters used was considerably higher and the color space and gradient finding methods took a lot of time and effort and the results are still not satisfactory.
 
 ### Possible improvements
-
+__High Brightness conditions__: I looked into some of the background remove techniques to detect and eliminate the shadows which are the major contributors to the algorithm failing with the current pipeline. The techniques did not seem robust to me and they focused on removing the background when a corresponding foreground object was present. I however, am interested in detecting the shadows when the actual object casting it is not in the frame. It feels like brute estimation of shadows but I am sure there must be more to it where some algorithm can learn that it is the shadows and not something relevant to the frame.
+__Parameters__: I am aware of some literature in the deep learning domain and I am pretty sure, the edge detection can be learned by intermediate layers of a CNN well and the shadow estimation too can be done well. This will help our algorithm to seamlessly draw the lane lines with less trouble.
